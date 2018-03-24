@@ -1,0 +1,15 @@
+FROM nginx:1.13.10-alpine
+
+LABEL maintainer=vikas@reachvikas.com
+
+COPY nginx_default.conf /etc/nginx/conf.d/default.conf
+
+# Not required, just added for troubleshooting
+RUN apk add --no-cache curl && \
+    rm -rf /tmp/* /var/cache/apk/* /var/tmp/*
+
+EXPOSE 80
+
+STOPSIGNAL SIGTERM
+
+CMD ["nginx", "-g", "daemon off;"]

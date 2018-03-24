@@ -1,0 +1,7 @@
+FROM rancher/lb-service-haproxy:v0.7.15
+
+LABEL maintainer=vikas@reachvikas.com
+
+COPY haproxy.cfg /etc/haproxy/haproxy.cfg
+
+CMD ["haproxy", "-f", "/etc/haproxy/haproxy.cfg"]
