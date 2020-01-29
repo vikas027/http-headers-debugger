@@ -1,4 +1,4 @@
-FROM haproxy:1.8.4-alpine
+FROM haproxy:1.6.15-alpine
 
 LABEL maintainer=vikas@reachvikas.com
 

@@ -2,18 +2,6 @@
 version: '2'
 
 services:
-  traefik:
-    build:
-      context: ./traefik
-      dockerfile: Dockerfile
-    image: traefik_proxy
-    container_name: traefik
-    ports:
-      - "8080:8080"
-      - "8090:8090"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-
   debugheaders:
     build:
       context: ./debugheaders
@@ -27,6 +15,18 @@ services:
       - "traefik.backend=debugheaders"
       - "traefik.enable=true"
       - "traefik.port=8000"
+
+  traefik:
+    build:
+      context: ./traefik
+      dockerfile: Dockerfile
+    image: traefik_proxy
+    container_name: traefik
+    ports:
+      - "8080:8080"
+      - "8090:8090"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
 
   nginx:
     build:
@@ -42,8 +42,7 @@ services:
   haproxy:
     build:
       context: ./haproxy
-      dockerfile: Dockerfile_rancher
-      #dockerfile: Dockerfile
+      dockerfile: Dockerfile
     image: haproxy_proxy
     container_name: haproxy
     ports:
