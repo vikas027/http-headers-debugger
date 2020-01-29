@@ -1,4 +1,4 @@
-FROM traefik:1.5.4-alpine
+FROM traefik:1.7.20-alpine
 
 LABEL maintainer=vikas@reachvikas.com
 

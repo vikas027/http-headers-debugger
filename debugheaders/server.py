@@ -23,5 +23,4 @@ class GetHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
 Handler = GetHandler
 httpd = SocketServer.TCPServer(("", PORT), Handler)
-
 httpd.serve_forever()
